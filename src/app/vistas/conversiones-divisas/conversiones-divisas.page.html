@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="titulo-menu">{{ idiomaSeleccionado === 'es' ? 'Divisas' : 'Currencies' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMainMenu()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="form-container">
+    <ion-list lines="none">
+      <ion-item class="horizontal-item">
+        <ion-label>{{ idiomaSeleccionado === 'es' ? convertir_de_espanol : convertir_de_ingles }}</ion-label>
+        <ion-input type="number" [(ngModel)]="cantidad" placeholder="Ingresa cantidad"
+          style="width: 80px; margin-left: 10px;" (keydown.enter)="convertir()">$
+        </ion-input>
+        <ion-select [(ngModel)]="monedaOrigen" interface="popover" style="margin-left: 10px;">
+          <ion-select-option value="USD">Dólares Estadounidenses (EUA)</ion-select-option>
+          <ion-select-option value="CAD">Dólares Canadienses (CAD)</ion-select-option>
+          <ion-select-option value="EUR">Euros</ion-select-option>
+          <ion-select-option value="MXN">Pesos Mexicanos (MXN)</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <div *ngIf="mensajeError" class="error-message">
+        {{ mensajeError }}
+      </div>
+
+      <ion-item>
+        <ion-label>{{ idiomaSeleccionado === 'es' ? 'A:' : 'To:' }}</ion-label>
+        <ion-input type="text" [value]="resultadoFormateado" style="width: 50px; margin-left: 10px; color: red;"
+          readonly placeholder="{{ idiomaSeleccionado === 'es' ? 'Resultado' : 'Result' }}">$
+        </ion-input>
+        <ion-select [(ngModel)]="monedaDestino" interface="popover">
+          <ion-select-option value="USD">Dólares Estadounidenses (EUA)</ion-select-option>
+          <ion-select-option value="CAD">Dólares Canadienses (CAD)</ion-select-option>
+          <ion-select-option value="EUR">Euros</ion-select-option>
+          <ion-select-option value="MXN">Pesos Mexicanos (MXN)</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button expand="block" (click)="convertir()">
+        {{ idiomaSeleccionado === 'es' ? 'Convertir' : 'Convert' }}
+      </ion-button>
+    </ion-list>
+  </div>
+</ion-content>

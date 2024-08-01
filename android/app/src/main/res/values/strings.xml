@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="title_activity_main">Calculator</string>
+    <string name="package_name">calculator.com.app</string>
+    <string name="custom_url_scheme">calculator.com.app</string>
+    <string name="admob_app_id">ca-app-pub-5655935156518611~6306504302</string>
+   
+</resources>

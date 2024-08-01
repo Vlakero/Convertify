@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMainMenu()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+      <ion-button (click)="goBack()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="titulo-menu">{{ idiomaSeleccionado === 'es' ? conversion_cable_espanol : conversion_cable_ingles
+      }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="form-container">
+    <ion-list lines="none">
+      <ion-item class="horizontal-item">
+        <ion-label class="calibre_cable">{{ idiomaSeleccionado === 'es' ? calibre_del_cable_espanol :
+          calibre_del_cable_ingles }}</ion-label>
+        <ion-select class="seleccion_calibre" [(ngModel)]="unidadSeleccionadaCalibre">
+          <ion-select-option *ngFor="let calibre of calibres" [value]="calibre.value">{{ calibre.name
+            }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="convertir_de">{{ idiomaSeleccionado === 'es' ? convertir_de_espanol : convertir_de_ingles
+          }}</ion-label>
+        <ion-input class="seleccion_cantidad" type="number" [(ngModel)]="cantidad"
+          style="width: 80px; margin-left: 10px;" (keydown.enter)="convertir()"></ion-input>
+        <ion-select class="seleccion_peso_metros" [(ngModel)]="unidadSeleccionadaOrigen"
+          (ngModelChange)="validarUnidades()">
+          <ion-select-option *ngFor="let unidad of unidades" [value]="unidad.value">{{ unidad.name
+            }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ idiomaSeleccionado === 'es' ? a_espanol : a_ingles }}</ion-label>
+        <ion-input type="text" [(ngModel)]="resultado"  placeholder="Resultado"
+          style="width: 50px; margin-left: 10px; color: red;" readonly></ion-input>
+        <ion-select [(ngModel)]="unidadSeleccionadaDestino">
+          <ion-select-option *ngFor="let unidad of unidades" [value]="unidad.value">{{ unidad.name
+            }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+
+
+      <ion-button class="boton_convertir" expand="block" (click)="convertir()">{{ idiomaSeleccionado === 'es' ?
+        boton_convertir_espanol : boton_convertir_ingles }}</ion-button>
+    </ion-list>
+  </div>
+  <!-- Fin del contenido del menú principal -->
+</ion-content>

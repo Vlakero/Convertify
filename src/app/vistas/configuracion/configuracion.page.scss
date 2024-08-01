@@ -1,0 +1,53 @@
+.titulo-menu{
+  color: #000000;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;  
+  font-family: 'Poppins', sans-serif;
+}
+
+.toolbar-button {
+  color: #0066FF;
+  }
+
+
+.lenguaje-icon{
+  position: relative;
+  width: 30px;
+  height: 30px;
+  color: black;
+  
+}
+.home-icon {
+  font-size: 24px;
+  color: black;
+  position: relative;
+  left: 230px;
+}
+
+.home-icon:hover::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 35px;
+  height: 35px;
+  border-radius: 20%;
+  background-color: blue;
+  z-index: -1;
+}
+.arrow-back-icon{
+  color: black;
+  position: absolute;
+left: 245px;
+width: 27px;
+height: 27px;
+
+}
+.titulo-menu{
+  position: relative;
+  font-size: 15.1px;
+  color: black;
+  right: 20px;
+ top: 5px;
+}

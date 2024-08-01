@@ -1,0 +1,140 @@
+// Variables para colores, tamaños, etc.
+$color-primary: var(--ion-color-primary);
+$color-link: black; // Color de enlace
+$color-text-secondary: #000000;
+$color-background-lightgray: lightgray;
+$color-border: black;
+
+// Mixins para responsividad
+@mixin respond-to($media) {
+  @if $media == 'mobile' {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+
+  @else if $media == 'tablet' {
+    @media (min-width: 769px) {
+      @content;
+    }
+  }
+}
+
+// Estilos Generales
+ion-menu-button {
+  color: $color-primary;
+}
+
+ion-menu {
+  grid-area: menu;
+
+  @include respond-to('mobile') {
+    display: none; // Ocultar el menú en móviles
+  }
+}
+
+ion-header {
+  grid-area: header;
+  background-color: $color-link; // Fondo del header
+}
+
+ion-content {
+  ion-col {
+    text-align: center;
+
+    ion-icon {
+      zoom: 3;
+      padding: 1px;
+
+      &:first-child {
+        zoom: 3.5;
+      }
+    }
+  }
+}
+
+// Flexbox para elementos responsivos
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  .flex-item {
+    color: $color-link;
+    width: calc(50% - 20px); // Ancho ajustado
+    height: 112px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    border: 4px solid $color-border;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      background-color: $color-background-lightgray;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.22); /* Sombra más notoria en hover */
+    }
+  }
+}
+
+// Media Queries
+@include respond-to('mobile') {
+  .flex-item {
+    width: calc(100% - 20px);
+  }
+
+  .estilo_img_configuración,
+  .estilo_img_acerca_de {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@include respond-to('tablet') {
+  .flex-item {
+    width: calc(33% - 20px);
+  }
+}
+
+ion-col {
+  // Alineación y espaciado
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // Estilos específicos para el ion-card
+  ion-card {
+    width: 100%;
+    max-width: 320px; // Ajusta según el tamaño deseado
+    padding: 0px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: rgb(172, 201, 255); // Ajusta si es necesario
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    // Estilos para el ion-icon dentro del ion-card
+    ion-icon {
+      font-size: 0.8rem; // Tamaño reducido del ícono
+      color: $color-primary; // Color del ícono (puedes cambiarlo)
+      margin-bottom: 1.5px; // Espaciado debajo del ícono
+      color: #0066ff;
+    }
+
+    // Estilos para el h3 dentro del ion-card
+    ion-text h3 {
+      font-size: 1.1rem;
+      font-weight: normal;
+      color: $color-text-secondary;
+      margin: 0;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.22); /* Sombra más notoria en hover */
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Roble-Calculator",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

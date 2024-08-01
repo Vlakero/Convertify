@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMainMenu()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+      <ion-button (click)="goBack()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="titulo-menu">
+      {{ idiomaSeleccionado === 'es' ? corriente_max_espanol : corriente_max_ingles }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="form-container">
+    <ion-list lines="none">
+      <ion-item class="horizontal-item">
+        <ion-label class="corriente">
+          {{ idiomaSeleccionado === 'es' ? corriente_espanol : corriente_ingles }}
+        </ion-label>
+        <ion-input class="input_ingresar" type="number" [(ngModel)]="corriente"></ion-input>
+      </ion-item>
+
+    <ion-button class="boton_convertir" expand="block" (click)="calcularCorrienteMaxima()">
+      {{ idiomaSeleccionado === 'es' ? boton_calcular_espanol : boton_calcular_ingles }}
+    </ion-button>
+
+    <ion-item *ngIf="imax">
+      <ion-label class="resultado">
+        {{ idiomaSeleccionado === 'es' ? corriente_max_espanol : corriente_max_ingles }}
+      </ion-label>
+      <ion-text style="width: 150px; margin-left: 10; color: red;" readonly class="input_resultado">{{ imax }} amp </ion-text>
+    </ion-item>
+  </ion-list>
+  </div>
+  <!-- Fin del contenido del menú principal -->
+</ion-content>

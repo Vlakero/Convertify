@@ -1,0 +1,166 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import '@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+$color-link-light: black; // Color de enlace para tema claro
+$color-link-dark: white;
+
+/* Padding */
+.padding-0 { padding: 0; }
+.padding-5 { padding: 5px; }
+.padding-10 { padding: 10px; }
+.padding-15 { padding: 15px; }
+.padding-20 { padding: 20px; }
+/* ... Puedes continuar con más tamaños según sea necesario */
+
+/* Margin */
+.margin-0 { margin: 0; }
+.margin-5 { margin: 5px; }
+.margin-10 { margin: 10px; }
+.margin-15 { margin: 15px; }
+.margin-20 { margin: 20px; }
+/* ... Puedes continuar con más tamaños según sea necesario */
+
+/* Text Alignment */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+/* Display */
+.d-block { display: block; }
+.d-inline { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-flex { display: flex; }
+.d-none { display: none; }
+
+/* Flexbox */
+.flex-row { flex-direction: row; }
+.flex-column { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.justify-content-start { justify-content: flex-start; }
+.justify-content-end { justify-content: flex-end; }
+.justify-content-center { justify-content: center; }
+.justify-content-between { justify-content: space-between; }
+.justify-content-around { justify-content: space-around; }
+.align-items-start { align-items: flex-start; }
+.align-items-end { align-items: flex-end; }
+.align-items-center { align-items: center; }
+.align-items-baseline { align-items: baseline; }
+.align-items-stretch { align-items: stretch; }
+
+/* Width and Height */
+.w-100 { width: 100%; }
+.h-100 { height: 100%; }
+
+/* Font Sizes */
+.text-small { font-size: .875rem; }
+.text-normal { font-size: 1rem; }
+.text-large { font-size: 1.25rem; }
+
+/* Colors */
+.text-primary { color: #007bff; }
+.text-secondary { color: #6c757d; }
+.text-success { color: #28a745; }
+.text-danger { color: #dc3545; }
+.text-warning { color: #ffc107; }
+.text-info { color: #17a2b8; }
+.text-light { color: #f8f9fa; }
+.text-dark { color: #343a40; }
+.bg-primary { background-color: #007bff; }
+.bg-secondary { background-color: #6c757d; }
+/* ... y así sucesivamente para otros colores */
+
+/* Border */
+.border { border: 1px solid #dee2e6; }
+.border-top { border-top: 1px solid #dee2e6; }
+.border-right { border-right: 1px solid #dee2e6; }
+.border-bottom { border-bottom: 1px solid #dee2e6; }
+.border-left { border-left: 1px solid #dee2e6; }
+.border-0 { border: 0; }
+.border-top-0 { border-top: 0; }
+.border-right-0 { border-right: 0; }
+.border-bottom-0 { border-bottom: 0; }
+.border-left-0 { border-left: 0; }
+
+/* Border Radius */
+.rounded { border-radius: .25rem; }
+.rounded-top { border-top-left-radius: .25rem; border-top-right-radius: .25rem; }
+.rounded-right { border-top-right-radius: .25rem; border-bottom-right-radius: .25rem; }
+.rounded-bottom { border-bottom-right-radius: .25rem; border-bottom-left-radius: .25rem; }
+.rounded-left { border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; }
+.rounded-circle { border-radius: 50%; }
+.rounded-pill { border-radius: 50rem; }
+
+/* Opacity */
+.opacity-100 { opacity: 1; }
+.opacity-75 { opacity: .75; }
+.opacity-50 { opacity: .5; }
+.opacity-25 { opacity: .25; }
+.opacity-0 { opacity: 0; }
+
+/* Visibility */
+.visible { visibility: visible }
+.invisible { visibility: hidden; }
+
+
+/*
+ * Optional CSS
+ * -----------------------------------
+ */
+
+/* This sets a different background and item background in light mode on ios */
+.ios body {
+  --ion-background-color: #f2f2f6;
+  --ion-toolbar-background: var(--ion-background-color);
+  --ion-item-background: #fff;
+}
+
+/* This sets a different background and item background in light mode on md */
+.md body {
+  --ion-background-color: #f9f9f9;
+  --ion-toolbar-background: var(--ion-background-color);
+  --ion-item-background: #fff;
+}
+
+/* This is added for the flashing that happens when toggling between themes */
+ion-item {
+  --transition: none;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    a {
+      color: $color-link-dark;
+      text-decoration: none; // O cualquier otro estilo que necesites
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    a {
+      color: $color-link-light;
+      text-decoration: none; // O cualquier otro estilo que necesites
+    }
+  }

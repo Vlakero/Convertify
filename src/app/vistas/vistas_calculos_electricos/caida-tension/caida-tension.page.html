@@ -1,0 +1,279 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMainMenu()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+      <ion-button (click)="goBack()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="titulo-menu">{{ idiomaSeleccionado === 'es' ? caida_tension_espanol :
+      caida_tension_ingles}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="form-container">
+    <ion-list lines="none">
+      <ion-card>
+        <ion-card-content>
+          <ion-item>
+            <ion-label class="tipo-corriente">Tipo de Corriente:</ion-label>
+            <ion-select class="input" [(ngModel)]="tipoCorriente">
+              <ion-select-option value="Corriente_monofasica">Monofásica</ion-select-option>
+              <ion-select-option value="Corriente_bifasica">Bifásica</ion-select-option>
+              <ion-select-option value="Corriente_trifasica">Trifásica</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label class="calibre_conductor">{{ idiomaSeleccionado === 'es' ?
+              calibre_conductor_espanol : calibre_conductor_ingles }}</ion-label>
+            <ion-select class="seleccion_calibre" [(ngModel)]="unidadSeleccionadaCalibre">
+              <ion-select-option *ngFor="let calibre of calibres" [value]="calibre.value">{{ calibre.name
+                }}</ion-select-option>
+            </ion-select> AWG</ion-item>
+          <ion-item>
+            <ion-label>Selecciona el tipo de conductor de acuerdo al calibre:</ion-label>
+          </ion-item>
+
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_monofasica'">
+            <ion-label class="tipo-conductor">Cobre</ion-label>
+            <ion-label>No cubierto y Recubierto</ion-label>
+            <ion-select class="input" [(ngModel)]="resistenciaConductor">
+              <ion-select-option disabled class="group-label">No cubierto</ion-select-option>
+              <ion-select-option *ngFor="let calibre of calibres" [value]="calibre.noCubierto">
+                Calibre {{calibre.name}} - {{calibre.noCubierto}}
+              </ion-select-option>
+              <ion-select-option disabled class="group-label">Recubierto</ion-select-option>
+              <ion-select-option *ngFor="let calibre of calibres" [value]="calibre.recubierto">
+                Calibre {{calibre.name}} - {{calibre.recubierto}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_monofasica'">
+            <ion-label class="tipo-conductor">Aluminio</ion-label>
+            <ion-label>Aluminio</ion-label>
+            <ion-select class="input" [(ngModel)]="resistenciaConductor">
+              <ion-select-option disabled class="group-label">Aluminio</ion-select-option>
+              <ion-select-option *ngFor="let calibre of calibres" [value]="calibre.aluminio">
+                Calibre {{calibre.name}} - {{calibre.aluminio}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+
+
+          <!--<ion-item *ngIf="tipoCorriente === 'Corriente_monofasica'">
+            <ion-label class="tipo-conductor">No Cubierto</ion-label>
+            <ion-select class="input" [(ngModel)]="resistenciaConductor">
+              <ion-select-option value="noCubierto" *ngFor="let calibre of calibres"
+                [value]="calibre.noCubierto">{{calibre.name}}--{{calibre.noCubierto
+                }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_monofasica'">
+            <ion-label class="tipo-conductor">Recubierto</ion-label>
+            <ion-select class="input" [(ngModel)]="resistenciaConductor">
+              <ion-select-option value="recubierto" *ngFor="let calibre of calibres"
+                [value]="calibre.recubierto">{{calibre.name}}--{{calibre.recubierto
+                }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_monofasica'">
+            <ion-label class="tipo-conductor">Cobre</ion-label>
+            <ion-select class="input" [(ngModel)]="resistenciaConductor">
+              <ion-select-option > No cubierto </ion-select-option>
+              <ion-select-option > Recubierto </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_monofasica'">
+            <ion-label class="tipo-conductor">Aluminio</ion-label>
+            <ion-select class="input" [(ngModel)]="resistenciaConductor">
+              <ion-select-option >Aluminio</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_monofasica'">
+            <ion-label class="tipo-conductor">Aluminio</ion-label>
+            <ion-select class="input" [(ngModel)]="resistenciaConductor">
+              <ion-select-option value="aluminio"  *ngFor="let calibre of calibres"
+                [value]="calibre.aluminio">{{calibre.name}}--{{calibre.aluminio
+                }}</ion-select-option>
+            </ion-select>
+          </ion-item>-->
+
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_bifasica'">
+            <ion-label class="tipo-conductor">Cobre</ion-label>
+            <ion-label>No cubierto y Recubierto</ion-label>
+            <ion-select class="input" [(ngModel)]="resistenciaConductor">
+              <ion-select-option disabled class="group-label">No cubierto</ion-select-option>
+              <ion-select-option *ngFor="let calibre of calibres" [value]="calibre.noCubierto">
+                Calibre {{calibre.name}} - {{calibre.noCubierto}}
+              </ion-select-option>
+              <ion-select-option disabled class="group-label">Recubierto</ion-select-option>
+              <ion-select-option *ngFor="let calibre of calibres" [value]="calibre.recubierto">
+                Calibre {{calibre.name}} - {{calibre.recubierto}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_bifasica'">
+            <ion-label class="tipo-conductor">Aluminio</ion-label>
+            <ion-label>Aluminio</ion-label>
+            <ion-select class="input" [(ngModel)]="resistenciaConductor">
+              <ion-select-option disabled class="group-label">Aluminio</ion-select-option>
+              <ion-select-option *ngFor="let calibre of calibres" [value]="calibre.aluminio">
+                Calibre {{calibre.name}} - {{calibre.aluminio}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <!--<ion-item *ngIf="tipoCorriente === 'Corriente_bifasica'"> 
+            <ion-label class="tipo-conductor">No Cubierto</ion-label>
+            <ion-select class="input" [(ngModel)]="resistenciaConductor">
+              <ion-select-option value="noCubierto" *ngFor="let calibre of calibres"
+                [value]="calibre.noCubierto">{{calibre.name}}--{{calibre.noCubierto
+                }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_bifasica'">
+            <ion-label class="tipo-conductor">Recubierto</ion-label>
+            <ion-select class="input" [(ngModel)]="resistenciaConductor">
+              <ion-select-option value="recubierto" *ngFor="let calibre of calibres"
+                [value]="calibre.recubierto">{{calibre.name}}--{{calibre.recubierto
+                }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_bifasica'">
+            <ion-label class="tipo-conductor">Aluminio</ion-label>
+            <ion-select class="input" [(ngModel)]="resistenciaConductor">
+              <ion-select-option value="aluminio" *ngFor="let calibre of calibres"
+                [value]="calibre.aluminio">{{calibre.name}}--{{calibre.aluminio
+                }}</ion-select-option>
+            </ion-select>
+          </ion-item>-->
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_trifasica'">
+            <ion-label class="tipo-conductor">Conduit PVC</ion-label>
+            <ion-select class="input" [(ngModel)]="impedanciaConductor">
+              <ion-select-option *ngFor="let calibre of calibres" [value]="calibre.PVC">Calibre {{calibre.name}} -
+                {{calibre.PVC
+                }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_trifasica'">
+            <ion-label class="tipo-conductor">Conduit Aluminio</ion-label>
+            <ion-select class="input" [(ngModel)]="impedanciaConductor">
+              <ion-select-option *ngFor="let calibre of calibres" [value]="calibre.Aluminios">Calibre {{calibre.name}} -
+                {{calibre.Aluminios
+                }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_trifasica'">
+            <ion-label class="tipo-conductor">Conduit Acero</ion-label>
+            <ion-select class="input" [(ngModel)]="impedanciaConductor">
+              <ion-select-option *ngFor="let calibre of calibres" [value]="calibre.acero">Calibre {{calibre.name}} -
+                {{calibre.acero
+                }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label class="tension">{{ idiomaSeleccionado === 'es' ? amperaje_espanol :
+              amperaje_ingles }}</ion-label>
+            <ion-input class="input" type="number" [(ngModel)]="tension"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label class="distancia">{{ idiomaSeleccionado === 'es' ? distancia_metros_espanol :
+              distancia_metros_ingles }}</ion-label>
+            <ion-input class="input" type="number" [(ngModel)]="distancia" (keydown.enter)="calcularCaidaTension()"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_monofasica'">
+            <ion-label class="VLN">{{ idiomaSeleccionado === 'es' ? vln_espanol : vln_ingles
+              }}</ion-label>
+            <ion-input class="input" type="number" [(ngModel)]="vlN"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_bifasica'">
+            <ion-label class="vff">{{ idiomaSeleccionado === 'es' ? vff_espanol : vff_ingles
+              }}</ion-label>
+            <ion-input class="input" type="number" [(ngModel)]="vff"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_trifasica' ">
+            <ion-label class="vff">{{ idiomaSeleccionado === 'es' ? vff_espanol : vff_ingles
+              }}</ion-label>
+            <ion-input class="input" type="number" [(ngModel)]="vff"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_monofasica' ">
+            <ion-label class="resistencia_conductor">{{ idiomaSeleccionado === 'es' ?
+              resistencia_espanol : resistencia_ingles }}</ion-label>
+            <ion-input class="input" type="number" [(ngModel)]="resistenciaConductor" disabled></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_bifasica' ">
+            <ion-label class="resistencia_conductor">{{ idiomaSeleccionado === 'es' ?
+              resistencia_espanol : resistencia_ingles }}</ion-label>
+            <ion-input class="input" type="number" [(ngModel)]="resistenciaConductor" disabled></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_trifasica'">
+            <ion-label class="impedancia">{{ idiomaSeleccionado === 'es' ? impedancia_espanol:
+              impedancia_ingles }}</ion-label>
+            <ion-input class="input" type="number" [(ngModel)]="impedanciaConductor" disabled></ion-input>
+          </ion-item>
+
+        </ion-card-content>
+      </ion-card>
+
+      <ion-button class="boton" expand="block" (click)="calcularCaidaTension()">Calcular</ion-button>
+      <ion-card>
+        <ion-card-content>
+          <ion-item>
+            <ion-label class="caida_tension">{{ idiomaSeleccionado === 'es' ? caida_tension_espanol :
+              caida_tension_ingles }}</ion-label>
+            <ion-text style="width: 90px; margin-left: 10px; color: red;" readonly class="input_resultado">{{
+              caidaTension }} </ion-text>
+          </ion-item>
+          <ion-item *ngIf="tipoCorriente === 'Corriente_monofasica' ">
+            <ion-label class="caida_tension">{{ idiomaSeleccionado === 'es' ? porcentaje_caida_tension_espanol:
+              porcentaje_caida_tension_ingles }}</ion-label>
+            <ion-text style="width: 90px; margin-left: 10px; color: red;" readonly class="input_resultado">{{
+              porcentajeCaidaTension}}%</ion-text>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_bifasica' ">
+            <ion-label class="caida_tension">{{ idiomaSeleccionado === 'es' ? porcentaje_caida_tension_espanol:
+              porcentaje_caida_tension_ingles }}</ion-label>
+            <ion-text style="width: 90px; margin-left: 10px; color: red;" readonly class="input_resultado">{{
+              porcentajeCaidaTensionbt}}%</ion-text>
+          </ion-item>
+
+          <ion-item *ngIf="tipoCorriente === 'Corriente_trifasica' ">
+            <ion-label class="caida_tension">{{ idiomaSeleccionado === 'es' ? porcentaje_caida_tension_espanol:
+              porcentaje_caida_tension_ingles }}</ion-label>
+            <ion-text style="width: 90px; margin-left: 10px; color: red;" readonly class="input_resultado">{{
+              porcentajeCaidaTensionbt}}%</ion-text>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <!-- Fin del contenido del menú principal -->
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,66 @@
+.titulo-menu {
+  color: #000000;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;  
+  font-family: 'Poppins', sans-serif;
+}
+
+.toolbar-button {
+  color: #0066FF;
+}
+
+.lenguaje-icon {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  color: black;
+}
+
+.home-icon {
+  font-size: 24px;
+  color: black;
+  position: relative;
+  left: 230px;
+}
+
+.home-icon:hover::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 35px;
+  height: 35px;
+  border-radius: 20%;
+  background-color: blue;
+  z-index: -1;
+}
+
+/* Estilo para las descripciones */
+.Descripcion, 
+.funciones {
+  font-size: 25px;
+  font-family: 'Arial', sans-serif; // Asumí que $text-font-family es Arial
+  text-align: justify;
+}
+
+/* Estilo para el texto regular */
+.texto_descripcion,
+.texto_acerca_de,
+.nota,
+.texto_nota {
+  font-size: 18px;
+  font-family: 'Arial', sans-serif; // Asumí que $text-font-family es Arial
+  text-align: justify;
+}
+
+.texto-con-margen {
+  margin: 25px; 
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.ion-content {
+  margin-left: 20px;
+  margin-right: 20px;
+}

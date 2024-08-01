@@ -1,0 +1,68 @@
+<!-- Este es para la vista de Android  -->
+<ion-header [translucent]="true" >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+    <ion-title> </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+<!-- Este es para modificarla vista de en general de la aplicación tanto para
+IOS como android  aqui va la estructura de la aplicación-->
+<ion-content [fullscreen]="true" >
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div>
+    <h1 class="estilo-inicio">{{ idiomaSeleccionado === 'es' ? inicio_espanol :  inicio_ingles }}</h1>
+  </div>
+  <!-- Contenido del menú principal -->
+  <div class="estilo-conversion-divisas">
+    <a href="conversiones-divisas">  <img src="../../assets/img/divisas.png" alt="conver_divisas" class="estilo_img_divisas "></a>
+     <a href="conversiones-divisas">{{ idiomaSeleccionado === 'es' ? conver_divisas_espanol :  conver_divisas_ingles }}</a>
+  </div>
+  <!----------------------------------------------------------------------------------------->
+   <div class="estilo-conversion-basicas">
+    <a href="menu-conversiones-unidades-basicas"><img src="../../assets/img/Balanza.png" alt="conver_basicas" class="estilo_img_balanza"></a>
+    <a href="menu-conversiones-unidades-basicas">{{ idiomaSeleccionado === 'es' ? conver_uni_basi_espanol :  conver_uni_basi_ingles }}</a>
+  </div>
+  <!----------------------------------------------------------------------------------------->
+  <div class="estilo-conversion-hogar">
+    <a href="menu-conversiones-unidades-hogar"><img src="../../assets/img/icono_temperatura.png" alt="conver_hogar" class="estilo_img_temperatura"></a>
+    <a href="menu-conversiones-unidades-hogar">{{ idiomaSeleccionado === 'es' ? conver_unidades_hogar_espanol :  conver_unidades_hogar_ingles }}</a>
+  </div>
+  <!----------------------------------------------------------------------------------------->
+  <div class="estilo-conversion-ciencia">
+    <a href="menu-conversiones-ciencia">
+      <img src="../../assets/img/presion.png" alt="conver_ciencia" class="estilo_img_presion"> </a>
+    <a href="menu-conversiones-ciencia">{{ idiomaSeleccionado === 'es' ? conver_unidades_ciencia_espanol : conver_unidades_ciencia_ingles }}</a>
+  </div>
+  <!----------------------------------------------------------------------------------------->
+  <div class="estilo-conversion-varias">
+    <a href="menu-conversiones-varias">
+      <img src="../../assets/img/angulo.png" alt="conver_varias" class="estilo_img_angulo"></a>
+    <a href="menu-conversiones-varias">{{ idiomaSeleccionado === 'es' ?  conver_unidades_varias_espanol :  conver_unidades_varias_ingles}}</a>
+  </div>
+<!----------------------------------------------------------------------------------------->
+    <div class="estilo-calculos-electricos">
+      <a href="menu-calculos-electricos" >
+        <img src="../../assets/img/calculos_electricos.png" alt="calc_elec" class="estilo_img_calculos_electricos"></a>
+    <a href="menu-calculos-electricos">{{ idiomaSeleccionado === 'es' ?calculos_electricos_espanol :  calculos_electricos_ingles }}</a>
+  </div>
+<!----------------------------------------------------------------------------------------->
+  <div class="estilo-calculos-motor">
+    <a href="menu-calculos-motor">
+      <img src="../../assets/img/calculos_motor.png" alt="calc_motor" class="estilo_img_calculos_motor"></a>
+    <a href="menu-calculos-motor">{{ idiomaSeleccionado === 'es' ? calculos_motor_espanol :  calculos_motor_ingles }}</a>
+  </div>
+<!----------------------------------------------------------------------------------------->
+  <div class="estilo-conversion-calculos-fotovoltaicos">
+    <a href="calculos-fotovoltaicos">
+      <img src="../../assets/img/fotovoltaicos.png" alt="fotovoltaicos" class="estilo_img_fotovoltaicos"></a>
+    <a href="calculos-fotovoltaicos">{{ idiomaSeleccionado === 'es' ? calculos_fotovoltaicos_espanol :  calculos_fotovoltaicos_ingles }}</a>
+ </div>
+  <!-- Fin del contenido del menú principal -->
+</ion-content>

@@ -1,0 +1,79 @@
+
+
+.titulo-menu {
+  color: #000000;
+  font-size: 20px;
+  text-align: justify;
+  font-weight: bold;  
+  font-family: 'Poppins', sans-serif;
+} 
+
+.toolbar-button {
+  color: #0066FF;
+}
+
+.custom-card {
+  margin: 10px;
+  text-align: center;
+}
+
+/* Additional responsive styles */
+@media (max-width: 576px) {
+  .custom-card.dark-bg h2 {
+    font-size: 1rem; /* Smaller title font size for extra small screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-card.dark-bg {
+    --border-radius: 15px; /* Slightly larger rounded corners for larger screens */
+  }
+}
+
+.ion-item {
+  --background: transparent; /* Transparent background for ion-item */
+}
+
+.estilo_mes, .estilo_label {
+  color: #000000;
+  font-family: 'Poppins', sans-serif;
+}
+
+.estilo_consumo {
+  --background: #b8d4ff;
+  color: #000000;
+  border-radius: 20px;
+}
+
+.input {
+  --background: #87a3cf;
+  color: #000000;
+  border-radius: 20px;
+
+}
+.custom-button {
+  width: 900px; /* Ajusta el ancho según sea necesario */
+  display: block;
+  margin: 0 auto; /* Centra el botón horizontalmente */
+  text-align: center;
+}
+
+
+ion-button[expand="block"] {
+  --background: var(--button-background-color, #0066ff); /* Default to blue if not set */
+  --color: var(--button-text-color, #ffffff); /* Default to white if not set */
+  margin-top: 8px;
+  text-align: center;
+  border-radius: 8px; /* Rounded corners */
+  font-size: 18px; /* Font size */
+  padding: 12px; /* Padding for button */
+  transition: background-color 0.3s ease;
+  width: 100%; /* Full width by default */
+  max-width: 955px; /* Maximum width for larger screens */
+  height: 60px;
+  margin: auto;
+} 
+
+ion-button[expand="block"]:hover {
+  --background: #0052aa; /* Darker blue on hover */
+}

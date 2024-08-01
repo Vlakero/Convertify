@@ -1,0 +1,71 @@
+<ion-header [translucent]="true" >
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="titulo-menu">{{ idiomaSeleccionado === 'es' ?  calibre_del_cable_espanol :  calibre_del_cable_ingles }}</ion-title>
+    <ion-icon name="home" class="home-icon" (click)="goToMainMenu()"></ion-icon>
+    <ion-icon name="arrow-back" class="arrow-back-icon" (click)="goBack()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<!-- Este es para modificarla vista de en general de la aplicación tanto para
+IOS como android  aqui va la estructura de la aplicación-->
+<ion-content [fullscreen]="true" >
+  <!-- Contenido del menú principal -->
+  <ion-item>
+    <ion-label  class="label_longitud_linea" position="floating">{{ idiomaSeleccionado === 'es' ?  longitud_linea_espanol :  longitud_linea_ingles }}</ion-label>
+    <ion-input class="input" type="number" [(ngModel)]="longitudLinea"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="diseño_label" position="floating">{{ idiomaSeleccionado === 'es' ?  caida_tension_permitida_espanol :  caida_tension_permitida_ingles }}</ion-label>
+    <ion-input class="input" type="number" [(ngModel)]="caidaTension"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="diseño_label" position="floating">{{ idiomaSeleccionado === 'es' ?  tipo_aislamiento_espanol :  tipo_aislamiento_ingles }}</ion-label>
+    <ion-select class="input" [(ngModel)]="tipoAislamiento">
+      <ion-select-option value="PVC">PVC</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="diseño_label" position="floating">{{ idiomaSeleccionado === 'es' ?  temperatura_ambiente_espanol :  temperatura_ambiente_ingles }}</ion-label>
+    <ion-input class="input" type="number" [(ngModel)]="temperaturaAmbiente"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="diseño_label" position="floating">{{ idiomaSeleccionado === 'es' ?  tipo_corriente_espanol :  tipo_corriente_ingles }}</ion-label>
+    <ion-select class="input" [(ngModel)]="tipoCorriente">
+      <ion-select-option value="Continua">{{ idiomaSeleccionado === 'es' ?  continua_espanol :  continua_ingles }}</ion-select-option>
+      <ion-select-option value="Monofásica">{{ idiomaSeleccionado === 'es' ?  monofasica_espanol :  monofasica_ingles }}</ion-select-option>
+      <ion-select-option value="Bifásica">{{ idiomaSeleccionado === 'es' ?  bifasica_espanol :  bifasica_ingles }}</ion-select-option>
+      <ion-select-option value="Trifásica">{{ idiomaSeleccionado === 'es' ?  trifasica_espanol : trifasica_ingles }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="tipoCorriente !== 'Continua'">
+    <ion-label class="diseño_label" position="floating">{{ idiomaSeleccionado === 'es' ?  factor_potencia_espanol :  factor_potencia_ingles }}</ion-label>
+    <ion-input class="input" type="number" [(ngModel)]="factorPotencia"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="diseño_label" position="floating">{{ idiomaSeleccionado === 'es' ?  tension_espanol : tension_ingles }}</ion-label>
+    <ion-input class="input" type="number" [(ngModel)]="tension"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="diseño_label" position="floating">{{ idiomaSeleccionado === 'es' ?  carga_espanol : carga_ingles }}</ion-label>
+    <ion-input class="input" type="number" [(ngModel)]="carga"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="calcularCalibre()">{{ idiomaSeleccionado === 'es' ?  boton_calcular_espanol :  boton_calcular_ingles }}</ion-button>
+
+  <ion-item>
+    <ion-label class="calibre_cable">{{ idiomaSeleccionado === 'es' ?  calibre_del_cable_espanol : calibre_del_cable_ingles }}</ion-label>
+    <ion-input class="input" [(ngModel)]="calibre" disabled></ion-input>
+  </ion-item>
+  <!-- Fin del contenido del menú principal -->
+</ion-content>
+

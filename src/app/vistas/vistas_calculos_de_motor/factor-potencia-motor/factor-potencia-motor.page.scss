@@ -1,0 +1,97 @@
+:root {
+  --background-light: #fff; /* Fondo para tema claro */
+  --color-light: #000; /* Texto para tema claro */
+  --border-color-light: #000; /* Borde para tema claro */
+  --button-text-color-light: white; /* Color del texto del botón para tema claro */
+
+  --background-dark: #333; /* Fondo para tema oscuro */
+  --color-dark: #fff; /* Texto para tema oscuro */
+  --border-color-dark: #aaa; /* Borde para tema oscuro */
+  --button-text-color-dark: yellow; /* Color del texto del botón para tema oscuro */
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: var(--background-light);
+    --color: var(--color-light);
+    --border-color: var(--border-color-light);
+    --button-text-color: var(--button-text-color-light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--background-dark);
+    --color: var(--color-dark);
+    --border-color: var(--border-color-dark);
+    --button-text-color: var(--button-text-color-dark);
+  }
+}
+
+.home-icon {
+  font-size: 24px;
+  color: var(--color);
+  position: relative;
+  left: 230px;
+  bottom: 10px;
+}
+
+.home-icon:hover::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 35px;
+  height: 35px;
+  border-radius: 20%;
+  background-color: blue; /* Considera cambiar esto para adaptarse a temas */
+  z-index: -1;
+}
+
+.arrow-back-icon {
+  color: var(--color);
+  position: absolute;
+  left: 245px;
+  width: 27px;
+  height: 27px;
+  bottom: 10px;
+}
+
+.titulo-menu {
+  position: relative;
+  font-size: 22px;
+  color: var(--color);
+  top: 5px;
+}
+
+.input_resultado {
+  background: var(--background);
+  color: var(--color);
+  border-color: var(--border-color);
+  opacity: 1; 
+  letter-spacing: 1px;
+}
+
+.a, .cantidad_convertir, .convertir_de, .input_ingresar {
+  color: var(--color);
+  font-weight: bold;
+}
+
+.a {
+  font-size: 25px;
+}
+
+.cantidad_convertir {
+  font-size: 21px;
+  letter-spacing: 4px;
+}
+
+.convertir_de, .input_ingresar {
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.boton_convertir {
+  font-size: 20px;
+  color: var(--button-text-color);
+}

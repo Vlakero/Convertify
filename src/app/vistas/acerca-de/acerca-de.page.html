@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ idiomaSeleccionado === 'es' ? acerca_de_espanol : acerca_de_ingles }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMainMenu()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ idiomaSeleccionado === 'es' ? acerca_de_espanol : acerca_de_ingles }}</ion-title>
+      <br />
+    </ion-toolbar>
+  </ion-header>
+  <br />
+  <p class="texto_descripcion texto-con-margen">{{ idiomaSeleccionado === 'es' ? descripcion_texto_espanol : descripcion_texto_ingles }}</p>
+  <br />
+  <p class="texto_acerca_de texto-con-margen">{{ idiomaSeleccionado === 'es' ? acerca_de_app_texto_espanol : acerca_de_app_texto_ingles }}</p>
+  <br />
+  <p class="nota texto-con-margen">{{ idiomaSeleccionado === 'es' ? version_espanol : version_ingles }}</p>
+  <p class="texto_nota texto-con-margen">{{ idiomaSeleccionado === 'es' ? version_texto_espanol : version_texto_ingles }}</p>
+  <br />
+  <p class="nota texto-con-margen">{{ idiomaSeleccionado === 'es' ? nota_espanol : nota_ingles }}</p>
+  <p class="texto_nota texto-con-margen">{{ idiomaSeleccionado === 'es' ? nota_texto_espanol : nota_texto_ingles }}</p>
+  <br />
+  <p class="texto_descripcion texto-con-margen">{{ idiomaSeleccionado === 'es' ? correo_texto_espanol : correo_texto_ingles }}</p>
+  <br />
+</ion-content>

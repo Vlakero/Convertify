@@ -1,0 +1,46 @@
+ion-content {
+  --background: var(--ion-background-color, #202020); /* Dark background color */
+}
+
+.titulo-menu{
+  color: #000000;
+  font-size: 20px;
+  text-align: justify;
+  font-weight: bold;  
+  font-family: 'Poppins', sans-serif;
+} 
+
+.toolbar-button {
+  color: #0066FF;
+  }
+.custom-card {
+  --background: var(--ion-card-background-color, #333333); /* Dark card background color */
+  --border-radius: 10px; /* Rounded corners for card */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  margin: 10px;
+  text-align: center;
+}
+
+.custom-card.dark-bg ion-icon {
+  font-size: 2.5rem; /* Icon size */
+  color: var(--ion-color-primary, #007aff); /* Primary icon color */
+}
+
+.custom-card.dark-bg h2 {
+  margin-top: 10px; /* Space between icon and title */
+  font-size: 1.25rem; /* Title font size */
+  color: var(--ion-text-color, #ffffff); /* White text color */
+}
+
+/* Additional responsive styles */
+@media (max-width: 576px) {
+  .custom-card.dark-bg h2 {
+    font-size: 1rem; /* Smaller title font size for extra small screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-card.dark-bg {
+    --border-radius: 15px; /* Slightly larger rounded corners for larger screens */
+  }
+}

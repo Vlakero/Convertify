@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMainMenu()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="titulo-menu">{{ idiomaSeleccionado === 'es' ? conversiones_espanol : conversiones_ingles }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="9" size-md="6" size-lg="3" class="custom-col" *ngFor="let item of items">
+        <ion-card class="custom-card" [href]="item.href">
+          <ion-icon [name]="item.icon"></ion-icon>
+          <ion-text>
+            <h2>{{ idiomaSeleccionado === 'es' ? item.title_es : item.title_en }}</h2>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+

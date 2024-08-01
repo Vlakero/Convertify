@@ -1,0 +1,204 @@
+// Estilos para el menú angosto
+.narrow-menu {
+  --width: 200px;  // Puedes ajustar el ancho según tus necesidades
+  --max-width: 200px;
+  --min-width: 200px;
+}
+
+// Variables para colores, tamaños, etc.
+$color-text-dark: #000000;
+$color-text-light: #333;
+$color-background-dark: #1c1c1c;
+$color-background-light: #f9f9f9;
+$color-link-light: #333;
+$color-link-dark: #f0f0f0;
+$primary-color: #0066ff;
+$primary-color-dark: #0006ff;
+$shadow-color: rgba(0, 0, 0, 0.2);
+
+// Estilos existentes mejorados
+ion-menu ion-content {
+  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+  box-shadow: 2px 0 5px $shadow-color;
+  transition: all 0.3s ease;
+} 
+
+ion-menu.md ion-content {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
+
+ion-menu.md ion-list {
+  padding: 20px 0;
+}
+
+ion-menu.md ion-note {
+  margin-bottom: 20px;
+}
+
+ion-menu.md ion-list-header,
+ion-menu.md ion-note {
+  padding-left: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+ion-menu.md ion-list#inbox-list ion-list-header {
+  font-size: 24px;
+  font-weight: 700;
+  color: $primary-color;
+}
+
+ion-menu.md ion-list#labels-list ion-list-header {
+  font-size: 18px;
+  margin-bottom: 18px;
+  color: #757575;
+}
+
+ion-menu.md ion-item {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  border-radius: 10px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+ion-menu.md ion-item:hover {
+  transform: translateX(5px);
+}
+
+ion-menu.md ion-item.selected {
+  --background: rgba(var(--ion-color-primary-rgb), 0.2);
+}
+
+ion-menu.md ion-item.selected ion-icon {
+  color: $primary-color-dark;
+}
+
+ion-menu.md ion-item ion-icon {
+  color: #616e7e;
+}
+
+ion-menu.md ion-item ion-label {
+  font-weight: 500;
+}
+
+ion-menu.ios ion-content {
+  --padding-bottom: 20px;
+}
+
+ion-menu.ios ion-list {
+  padding: 20px 0 0 0;
+}
+
+ion-menu.ios ion-note {
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+ion-menu.ios ion-item {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --min-height: 50px;
+}
+
+ion-menu.ios ion-item.selected ion-icon {
+  color: $primary-color-dark;
+}
+
+ion-menu.ios ion-item ion-icon {
+  font-size: 24px;
+  color: #73849a;
+}
+
+ion-menu.ios ion-list#labels-list ion-list-header {
+  margin-bottom: 8px;
+}
+
+ion-menu.ios ion-list-header,
+ion-menu.ios ion-note {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+ion-menu.ios ion-note {
+  margin-bottom: 8px;
+}
+
+ion-note {
+  display: inline-block;
+  font-size: 16px;
+  color: var(--ion-color-medium-shade);
+}
+
+ion-item.selected {
+  --color: var(--ion-color-primary);
+}
+
+// Media query para tema oscuro
+@media (prefers-color-scheme: dark) {
+  ion-menu ion-content {
+    --background: $color-background-dark;
+  }
+
+  ion-menu.md ion-list-header,
+  ion-menu.md ion-note,
+  ion-menu.md ion-item ion-label,
+  ion-menu.ios ion-item ion-icon,
+  ion-note {
+    color: $color-text-dark;
+  }
+
+  ion-menu.md ion-item ion-icon,
+  ion-menu.ios ion-item.selected ion-icon {
+    color: $color-text-dark;
+  }
+}
+
+// Media query para tema claro
+@media (prefers-color-scheme: light) {
+  ion-menu ion-content {
+    --background: $color-background-light;
+  }
+
+  ion-menu.md ion-list-header,
+  ion-menu.md ion-note,
+  ion-menu.md ion-item ion-label,
+  ion-menu.ios ion-item ion-icon,
+  ion-note {
+    color: $color-text-light;
+  }
+
+  ion-menu.md ion-item ion-icon,
+  ion-menu.ios ion-item.selected ion-icon {
+    color: $color-text-light;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  img {
+    filter: brightness(0.9); // Ajustar según sea necesario
+  }
+}
+
+// Establece el filtro para imágenes en modo oscuro
+@media (prefers-color-scheme: dark) {
+  img {
+    filter: brightness(1.1) invert(1); // Ajustar según sea necesario
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  a {
+    color: $color-link-dark;
+    text-decoration: none; // O cualquier otro estilo que necesites
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  a {
+    color: $color-link-light;
+    text-decoration: none; // O cualquier otro estilo que necesites
+  }
+}

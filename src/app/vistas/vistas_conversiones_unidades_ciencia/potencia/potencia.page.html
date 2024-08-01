@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="titulo-menu">{{ idiomaSeleccionado === 'es' ? potencia_espanol : potencia_ingles }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMainMenu()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+      <ion-button (click)="goBack()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="form-container">
+    <ion-list lines="none">
+      <ion-item class="horizontal-item">
+        <ion-label class="convertir-label">{{ idiomaSeleccionado === 'es' ? convertir_de_espanol : convertir_de_ingles
+          }}</ion-label>
+        <ion-input class="input-ingresar" type="number" [(ngModel)]="cantidad" placeholder="Ingresa cantidad"
+          style="width: 80px; margin-left: 10px;" (keydown.enter)="convertir()"></ion-input>
+        <ion-select [(ngModel)]="unidadSeleccionadaOrigen" class="unidad-seleccionada">
+          <ion-select-option *ngFor="let unidad of unidades" [value]="unidad.value">{{ unidad.name
+            }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <div *ngIf="mensajeError" class="error-message">
+        {{ mensajeError }}
+      </div>
+
+      <ion-item class="convertir-item">
+        <ion-label class="a">{{ idiomaSeleccionado === 'es' ? a_espanol : a_ingles }}</ion-label>
+        <ion-input class="input-resultado" type="text" [value]="resultadoFormateado" placeholder="Resultado"
+          style="width: 50px; margin-left: 10px; color: red;" readonly></ion-input>
+        <ion-select [(ngModel)]="unidadSeleccionadaDestino" class="unidad-seleccionada">
+          <ion-select-option *ngFor="let unidad of unidades" [value]="unidad.value">{{ unidad.name
+            }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button expand="block" (click)="convertir()" class="boton-convertir">{{ idiomaSeleccionado === 'es' ?
+        boton_convertir_espanol : boton_convertir_ingles }}</ion-button>
+
+    </ion-list>
+  </div>
+</ion-content>

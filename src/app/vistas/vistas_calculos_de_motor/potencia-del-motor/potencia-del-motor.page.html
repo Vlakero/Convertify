@@ -1,0 +1,106 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMainMenu()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+      <ion-button (click)="goBack()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="titulo-menu">{{ idiomaSeleccionado === 'es' ? calculos_electricos_espanol :
+      calculos_electricos_ingles }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="form-container">
+    <ion-list lines="none">
+      <ion-item class="form-item">
+        <ion-label class="diseño_label">{{ idiomaSeleccionado === 'es' ? tipo_corriente_espanol : tipo_corriente_ingles
+          }}</ion-label>
+        <ion-select class="diseño_seleccion" [(ngModel)]="selectedCorriente">
+          <ion-select-option value="continua">Continua</ion-select-option>
+          <ion-select-option value="monofasica">Alterna Monofásica</ion-select-option>
+          <ion-select-option value="bifasica">Alterna Bifásica</ion-select-option>
+          <ion-select-option value="trifasica">Alterna Trifásica</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="form-item">
+        <ion-label class="diseño_label">{{ idiomaSeleccionado === 'es' ? voltaje_motor_espanol : voltaje_motor_ingles
+          }}</ion-label>
+        <ion-input class="input" type="number" [(ngModel)]="voltaje" placeholder="Voltaje"></ion-input>
+      </ion-item>
+
+      <!--<ion-item class="form-item" *ngIf="selectedCorriente !== 'continua'">
+      <ion-label class="diseño_label">{{ idiomaSeleccionado === 'es' ? tension_motor_espanol : tension_motor_ingles }}</ion-label>
+      <ion-input class="input" type="number" [(ngModel)]="tension"></ion-input>
+    </ion-item>-->
+
+      <ion-item class="form-item">
+        <ion-label class="diseño_label">{{ idiomaSeleccionado === 'es' ? corriente_espanol : corriente_ingles
+          }}</ion-label>
+        <ion-input class="input" type="number" [(ngModel)]="corriente" placeholder="Amperaje"></ion-input>
+      </ion-item>
+
+      <!-- Agregamos el campo para ingresar el voltaje en corriente continua -->
+
+      <ion-item class="form-item"
+        *ngIf="selectedCorriente === 'monofasica' || selectedCorriente === 'bifasica' || selectedCorriente === 'trifasica'">
+        <ion-label class="diseño_label">{{ idiomaSeleccionado === 'es' ? factor_potencia_espanol :
+          factor_potencia_ingles }}</ion-label>
+        <ion-input class="input" type="number" [(ngModel)]="factorPotencia" placeholder="Factor de Potencia"
+          (keydown.enter)="calculatePotencia()"></ion-input>
+      </ion-item>
+
+      <ion-item class="form-item">
+        <ion-label class="diseño_label">{{ idiomaSeleccionado === 'es' ? eficiencia_motor_espanol :
+          eficiencia_motor_ingles }}</ion-label>
+        <ion-input class="input" type="number" [(ngModel)]="eficiencia" placeholder="Porcentaje"
+          (keydown.enter)="calculatePotencia()"></ion-input>
+      </ion-item>
+
+      <ion-button class="boton_convertir" expand="block" (click)="calculatePotencia()">{{ idiomaSeleccionado === 'es' ?
+        boton_convertir_espanol : boton_convertir_ingles }}</ion-button>
+
+      <ion-item class="form-item">
+        <ion-label class="diseño_label"></ion-label>
+        <div *ngIf="unidadSeleccionada === 'W' && potencia">
+          <ion-input class="input" type="text" [value]="potencia" style="width: 100%;
+          margin-bottom: 8px;
+          --padding-start: 10px;
+          --padding-end: 10px;
+          --color: red;" readonly></ion-input>
+        </div>
+
+        <div *ngIf="unidadSeleccionada === 'kW' && potencia">
+          <ion-input class="input" type="text" [value]="potenciass" style="width: 100%;
+          margin-bottom: 8px;
+          --padding-start: 10px;
+          --padding-end: 10px;
+          --color: red;" readonly></ion-input>
+        </div>
+
+        <div *ngIf="unidadSeleccionada === 'HP' && potencia">
+          <ion-input class="input" type="text" [value]="potenciahp" style="width: 100%;
+        margin-bottom: 8px;
+        --padding-start: 10px;
+        --padding-end: 10px;
+        --color: red;" readonly></ion-input>
+        </div>
+
+        <ion-select [(ngModel)]="unidadSeleccionada">
+          <ion-select-option value="W">{{ idiomaSeleccionado === 'es' ? 'Watts' : 'Watts' }}</ion-select-option>
+          <ion-select-option value="kW">{{ idiomaSeleccionado === 'es' ? 'Kilovatios' : 'Kilowatts'
+            }}</ion-select-option>
+          <ion-select-option value="HP">{{ idiomaSeleccionado === 'es' ? 'Caballos de fuerza' : 'Horsepower'
+            }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+
+    </ion-list>
+  </div>
+  <!-- Fin del contenido del menú principal -->
+</ion-content>

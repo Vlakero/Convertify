@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ idiomaSeleccionado === 'es' ? configuracion_espanol : configuracion_ingles }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMainMenu()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list-header>{{ idiomaSeleccionado === 'es' ? lenguaje_espanol : lenguaje_ingles }}</ion-list-header>
+  <ion-button fill="clear" expand="full" (click)="cambiarIdioma('es')">ESPAÑOL</ion-button>
+  <ion-button fill="clear" expand="full" (click)="cambiarIdioma('en')">INGLÉS</ion-button>
+
+  <!--<ion-list-header>{{ idiomaSeleccionado === 'es' ? apariencia_espanol :  apariencia_ingles }}</ion-list-header>
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-toggle [(ngModel)]="themeToggle" (ionChange)="toggleChange($event)" justify="space-between"
+        >Dark Mode</ion-toggle
+      >
+    </ion-item>
+  </ion-list>-->
+
+  <ion-list-header>{{ idiomaSeleccionado === 'es' ? brillo_espanol : brillo_ingles }}</ion-list-header>
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-range value="40">
+        <ion-icon name="sunny-outline" slot="start"></ion-icon>
+        <ion-icon name="sunny" slot="end"></ion-icon>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-toggle justify="space-between" checked>True Tone</ion-toggle>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>
+
+
+<!-- close-->
+
+<!-- <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-button expand="full" (click)="cambiarIdioma('es')">ESPAÑOL</ion-button>
+  <ion-button expand="full" (click)="cambiarIdioma('en')">INGLES</ion-button>
+</ion-content> -->

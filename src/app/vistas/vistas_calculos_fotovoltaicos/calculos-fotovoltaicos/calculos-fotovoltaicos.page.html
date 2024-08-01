@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMainMenu()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+      <ion-button (click)="goBack()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="titulo-menu">{{ idiomaSeleccionado === 'es' ? calculos_fotovoltaicos_espanol : calculos_fotovoltaicos_ingles }}</ion-title>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content [fullscreen]="true">
+  <ion-content>
+    <ion-item>
+      <ion-label>{{ idiomaSeleccionado === 'es' ? tipo_facturacion_espanol : tipo_facturacion_ingles }}</ion-label>
+      <ion-select [(ngModel)]="tipoFacturacion">
+        <ion-select-option value="MENSUAL">Mensual</ion-select-option>
+        <ion-select-option value="BIMESTRAL">Bimestral</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="tipoFacturacion === 'MENSUAL'">
+      <ion-grid>
+        <ion-row *ngFor="let mes of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]">
+          <ion-col size="4">
+            <ion-label class="estilo_mes">{{ obtenerNombreMes(mes) }}</ion-label>
+          </ion-col>
+          <ion-col size="5">
+            <ion-input class="estilo_consumo" type="number" [(ngModel)]="consumoMensual[mes]" placeholder="Ingrese el consumo en kWh"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item *ngIf="tipoFacturacion === 'BIMESTRAL'">
+      <ion-label class="estilo_label">{{ idiomaSeleccionado === 'es' ? consumo_total_espanol : consumo_total_ingles }}</ion-label>
+      <ion-input class="input" type="number" [(ngModel)]="consumoTotal"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="calcularEnergiaTotal()" >
+      {{ idiomaSeleccionado === 'es' ? boton_convertir_espanol : boton_convertir_ingles }}
+    </ion-button>
+
+    <ion-item *ngIf="calculosRealizados">
+      <ion-label class="estilo_label">{{ idiomaSeleccionado === 'es' ? energia_requerida_espanol : energia_requerida_ingles }}</ion-label>
+      <ion-input class="input" [(ngModel)]="StringEnergiaTotalRequerida" disabled></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="calculosRealizados">
+      <ion-label class="estilo_label">{{ idiomaSeleccionado === 'es' ? horas_sol_espanol : horas_sol_ingles }}</ion-label>
+      <ion-input class="input" type="number" [(ngModel)]="horasSol"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="calculosRealizados">
+      <ion-label class="estilo_label">{{ idiomaSeleccionado === 'es' ? factor_perdida_espanol : factor_perdida_ingles }}</ion-label>
+      <ion-input class="input" type="number" [(ngModel)]="factorPerdida" disabled></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="calculosRealizados">
+      <ion-label class="estilo_label">{{ idiomaSeleccionado === 'es' ? potencia_pico_espanol : potencia_pico_ingles }}</ion-label>
+      <ion-input class="input" [(ngModel)]="StringCalcularPotenciaPicoFV" disabled></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="calculosRealizados">
+      <ion-label class="estilo_label">{{ idiomaSeleccionado === 'es' ? modulos_necesarios_espanol : modulos_necesarios_ingles }}</ion-label>
+      <ion-input class="input" [(ngModel)]=" calcularModulosNecesarios " disabled></ion-input>
+    </ion-item>
+  </ion-content>
+</ion-content>

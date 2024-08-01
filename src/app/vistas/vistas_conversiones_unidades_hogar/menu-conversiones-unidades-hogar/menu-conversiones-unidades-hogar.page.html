@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMainMenu()">
+        <ion-icon class="toolbar-button" slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="titulo-menu">{{ idiomaSeleccionado === 'es' ? conversiones_espanol : conversiones_ingles
+      }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="9" size-md="6" size-lg="3" class="custom-col">
+        <ion-card class="custom-card dark-bg" href="temperatura">
+          <ion-icon name="thermometer-outline"></ion-icon>
+          <ion-text>
+            <h2>{{ idiomaSeleccionado === 'es' ? temperatura_espanol : temperatura_ingles }}</h2>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="9" size-md="6" size-lg="3" class="custom-col">
+        <ion-card class="custom-card dark-bg" href="tiempo">
+          <ion-icon name="time-outline"></ion-icon>
+          <ion-text>
+            <h2>{{ idiomaSeleccionado === 'es' ? tiempo_espanol : tiempo_ingles }}</h2>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="9" size-md="6" size-lg="3" class="custom-col">
+        <ion-card class="custom-card dark-bg" href="velocidad">
+          <ion-icon name="speedometer-outline"></ion-icon>
+          <ion-text>
+            <h2>{{ idiomaSeleccionado === 'es' ? velocidad_espanol : velocidad_ingles }}</h2>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

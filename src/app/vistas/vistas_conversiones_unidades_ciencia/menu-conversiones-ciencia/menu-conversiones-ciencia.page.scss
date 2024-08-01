@@ -1,0 +1,54 @@
+.titulo-menu {
+  color: #000;
+  font-size: 20px;
+  text-align: justify;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
+
+.toolbar-button {
+  color: #0066FF;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: #003399;
+  }
+}
+
+.custom-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* Sombra más suave */
+  margin: 10px;
+  border-radius: 8px; /* Bordes redondeados */
+  text-align: center;
+  background-color: #acc9ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.22); /* Sombra más notoria en hover */
+  }
+}
+
+.custom-card ion-icon {
+  font-size: 2.5rem; /* Icon size */
+  color: #0060ff; /* Default icon color */
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: #0033cc;
+  }
+}
+
+.custom-card h2 {
+  margin-top: 10px; /* Space between icon and title */
+  font-size: 1rem; /* Title font size */
+  color: #000; /* Black text color */
+  font-family: 'Poppins', sans-serif; /* Ensure consistent font family */
+}
+
+
+.custom-col {
+  @media (max-width: 767px) {
+    margin: 10px 0; /* Margin for mobile devices */
+  }
+}

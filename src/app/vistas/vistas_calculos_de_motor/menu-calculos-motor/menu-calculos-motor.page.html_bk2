@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar color="light">
+        <ion-buttons slot="start">
+            <ion-button expand="block">
+                <!--<ion-icon name="arrow-back"></ion-icon>-->
+                
+                <ion-menu-button></ion-menu-button>
+                  
+            </ion-button>
+
+        </ion-buttons>
+        <ion-title>{{ idiomaSeleccionado === 'es' ? calculos_espanol :  calculos_ingles }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+
+            <ion-col size="6">
+                <ion-card href="corriente-del-motor">
+                    <ion-icon name="cash-outline"></ion-icon>
+                    <ion-text>
+                        <h2>{{ idiomaSeleccionado === 'es' ? corriente_motor_espanol :  corriente_motor_ingles }}</h2>
+                    </ion-text>
+                </ion-card>
+            </ion-col>
+
+            <ion-col size="6">
+                <ion-card href="potencia-del-motor">
+                    <ion-icon name="car-sport-outline"></ion-icon>
+                    <ion-text>
+                        <h2>{{ idiomaSeleccionado === 'es' ? potencia_motor_espanol :  potencia_motor_ingles }}</h2>
+                    </ion-text>
+                </ion-card>
+            </ion-col>
+
+            <ion-col size="6">
+                <ion-card href="tension-del-motor">
+                    <ion-icon name="calculator-outline"></ion-icon>
+                    <ion-text>
+                        <h2>{{ idiomaSeleccionado === 'es' ? tension_motor_espanol : tension_motor_ingles }}</h2>
+                    </ion-text>
+                </ion-card>
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+</ion-content>
