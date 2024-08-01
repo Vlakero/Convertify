@@ -23,7 +23,7 @@ jobs:
         working-directory: src/app
 
       - name: Build project
-        run: npm run build
+        run: npm run build --prod
         working-directory: src/app
 
       - name: Deploy to Azure
@@ -31,4 +31,4 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           app_location: "/app"  # Ubicación de tu aplicación
-          output_location: "dist"  # Directorio donde se genera la build
+          output_location: "dist/[Convertify]"  # Directorio donde se genera la build
