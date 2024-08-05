@@ -21,7 +21,7 @@ export class PasarelaDePagoPage implements AfterViewInit {
   }
 
   goToMainMenu() {
-    // Aquí rediriges a la página del menú principal
+    // Redirige a la página del menú principal
     this.navCtrl.navigateRoot('/folder/Inbox');
   }
 
@@ -31,30 +31,48 @@ export class PasarelaDePagoPage implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // Añade el script de PayPal
+    this.loadPaypalScript();
+  }
+
+  loadPaypalScript() {
     const script = document.createElement('script');
     script.src = 'https://www.paypal.com/sdk/js?client-id=AcWhVZfu_KSLK2gc-uqjDRzd6SvsWLpoDplHIrngChKfYhogRS11gJ-6XeLDvTUUBdLmgl8Gl8fpe14F&vault=true&intent=subscription';
-    script.onload = () => this.initializePayPalButton();
+    script.onload = () => {
+      console.log('PayPal SDK loaded');
+      this.initializePayPalButton();
+    };
+    script.onerror = () => {
+      console.error('PayPal SDK failed to load');
+    };
     document.body.appendChild(script);
   }
 
   initializePayPalButton() {
-    (window as any).paypal.Buttons({
-      style: {
-        shape: 'pill',
-        color: 'gold',
-        layout: 'vertical',
-        label: 'subscribe'
-      },
-      createSubscription: (data: any, actions: any) => {
-        return actions.subscription.create({
-          /* Crea la suscripción */
-          plan_id: 'P-3T662053RR938364VM2YMTHA'
-        });
-      },
-      onApprove: (data: any, actions: any) => {
-        this.presentSuccessToast(data.subscriptionID); // Muestra el toast de éxito
-      }
-    }).render('#paypal-button-container-P-3T662053RR938364VM2YMTHA'); // Renderiza el botón de PayPal
+    const container = document.getElementById('paypal-button-container-P-3T662053RR938364VM2YMTHA');
+    if (container) {
+      const paypal: any = (window as any).paypal;
+      paypal.Buttons({
+        style: {
+          shape: 'pill',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+        },
+        createSubscription: (data: any, actions: any) => {
+          return actions.subscription.create({
+            plan_id: 'P-3T662053RR938364VM2YMTHA'
+          });
+        },
+        onApprove: (data: any, actions: any) => {
+          try {
+            this.presentSuccessToast(data.subscriptionID); // Muestra el toast de éxito
+          } catch (error) {
+            console.error('Error during subscription approval:', error);
+          }
+        }
+      }).render(container);
+    } else {
+      console.error('PayPal button container not found');
+    }
   }
 }

@@ -37,27 +37,42 @@ export class PasarelaMensualPage implements OnInit {
   loadPaypalScript() {
     const script = document.createElement('script');
     script.src = 'https://www.paypal.com/sdk/js?client-id=AcWhVZfu_KSLK2gc-uqjDRzd6SvsWLpoDplHIrngChKfYhogRS11gJ-6XeLDvTUUBdLmgl8Gl8fpe14F&vault=true&intent=subscription';
-    script.onload = () => this.renderPaypalButton();
+    script.onload = () => {
+      console.log('PayPal SDK loaded');
+      this.renderPaypalButton();
+    };
     document.body.appendChild(script);
   }
 
+  
+
   renderPaypalButton() {
-    const paypal: any = (window as any).paypal;
-    paypal.Buttons({
-      style: {
-        shape: 'rect',
-        color: 'gold',
-        layout: 'vertical',
-        label: 'subscribe'
-      },
-      createSubscription: (data: any, actions: any) => {
-        return actions.subscription.create({
-          plan_id: 'P-4XR33822HY7736231M2YN7KY'
-        });
-      },
-      onApprove: (data: any, actions: any) => {
-        this.presentSuccessToast(data.subscriptionID); // Muestra el toast de éxito
-      }
-    }).render('#paypal-button-container-P-4XR33822HY7736231M2YN7KY');
+    const container = document.getElementById('paypal-button-container-P-4XR33822HY7736231M2YN7KY');
+    if (container) {
+      const paypal: any = (window as any).paypal;
+      paypal.Buttons({
+        style: {
+          shape: 'rect',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+        },
+        createSubscription: (data: any, actions: any) => {
+          return actions.subscription.create({
+            plan_id: 'P-4XR33822HY7736231M2YN7KY'
+          });
+        },
+        onApprove: (data: any, actions: any) => {
+          try {
+            this.presentSuccessToast(data.subscriptionID); // Muestra el toast de éxito
+          } catch (error) {
+            console.error('Error during subscription approval:', error);
+          }
+        }
+        
+      }).render(container);
+    } else {
+      console.error('PayPal button container not found');
+    }
   }
 }
