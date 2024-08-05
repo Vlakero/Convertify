@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
     { title: 'Inicio', url: '/folder/Inbox', icon: 'home' },
     { title: 'Configuración', url: '/configuracion', icon: 'settings' },
     { title: 'Acerca de Convertify', url: '/acerca-de', icon: 'information-circle' },
+    { title: 'Suscribirse', url: '/payscreen', icon: 'close-circle'},
   ];
   public labels = [];
 

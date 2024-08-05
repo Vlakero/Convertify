@@ -154,7 +154,19 @@ const routes: Routes = [
   {
     path: 'corrientemax',
     loadChildren: () => import('./vistas/vistas_calculos_fotovoltaicoss/calculo-de-corriente-maxima/calculo-de-corriente-maxima.module').then( m => m.CalculoDeCorrienteMaximaPageModule)
+  },  {
+    path: 'pasarela-de-pago',
+    loadChildren: () => import('./vistas/pasarela-de-pago/pasarela-de-pago.module').then( m => m.PasarelaDePagoPageModule)
   },
+  {
+    path: 'payscreen',
+    loadChildren: () => import('./vistas/payscreen/payscreen.module').then( m => m.PayscreenPageModule)
+  },
+  {
+    path: 'pasarela-mensual',
+    loadChildren: () => import('./vistas/pasarela-mensual/pasarela-mensual.module').then( m => m.PasarelaMensualPageModule)
+  },
+
 
 ];
 

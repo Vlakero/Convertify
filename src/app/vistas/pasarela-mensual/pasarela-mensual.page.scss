@@ -1,0 +1,24 @@
+.paypal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Ajusta para alinear el contenido más arriba */
+    padding-top: 40px; /* Espacio superior para mover el contenido hacia abajo */
+    text-align: center;
+    height: 100%;
+  }
+  
+  .paypal-container h1 {
+    font-size: 32px; /* Tamaño de fuente más grande para el título */
+    margin-bottom: 40px; /* Espacio entre el título y el botón */
+  }
+  
+  /* Estilo adicional para aumentar el tamaño del botón de PayPal */
+  #paypal-button-container-P-4XR33822HY7736231M2YN7KY {
+    width: 100%;
+    max-width: 400px; /* Ajusta el tamaño máximo del botón */
+    padding: 20px; /* Espacio alrededor del botón */
+    display: flex;
+    justify-content: center;
+  }
+  

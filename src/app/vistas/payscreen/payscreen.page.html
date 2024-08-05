@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToMainMenu()">
+        <ion-icon class="home-icon" slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+      <ion-button (click)="goBack()">
+        <ion-icon class="arrow-back-icon" slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Suscríbete</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="welcome-container">
+    <h1>Disfruta las Funciones de Convertify sin anuncios</h1>
+    <p>Suscríbete para obtener todas las funciones premium desde $39.99mxn</p>
+    <div class="button-container">
+      
+      <!-- Contenedor para el Plan Mensual -->
+      <div class="subscription-container">
+        <h2>Suscríbete al <strong>Plan Mensual</strong> por $39.99mxn</h2>
+        <ul>
+          <li>Elimina los anuncios</li>
+        </ul>
+        <ion-button expand="block" (click)="goToMonthly()">Convertify +</ion-button>
+        <div id="paypal-button-container-monthly"></div>
+      </div>
+
+      <!-- Contenedor para el Plan Anual -->
+      <div class="subscription-container">
+        <h2>Suscríbete al <strong>Plan Anual</strong> por $399mxn</h2>
+        <ul>
+          <li>Elimina los anuncios</li>
+          <li>Paga 10 meses por el precio de 12 meses</li>
+        </ul>
+        <ion-button expand="block" (click)="goToPayment()">Convertify Premium</ion-button>
+        <div id="paypal-button-container-annual"></div>
+      </div>
+
+    </div>
+  </div>
+</ion-content>
