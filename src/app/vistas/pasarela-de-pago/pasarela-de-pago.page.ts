@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pasarela-de-pago',
@@ -8,7 +8,17 @@ import { NavController } from '@ionic/angular';
 })
 export class PasarelaDePagoPage implements AfterViewInit {
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private toastController: ToastController) { }
+
+  async presentSuccessToast(subscriptionID: string) {
+    const toast = await this.toastController.create({
+      message: `Suscripción creada con éxito. ID: ${subscriptionID}`,
+      duration: 3000,
+      color: 'success',
+      position: 'top'
+    });
+    toast.present();
+  }
 
   goToMainMenu() {
     // Aquí rediriges a la página del menú principal
@@ -19,7 +29,6 @@ export class PasarelaDePagoPage implements AfterViewInit {
     // Navegar hacia atrás en la pila de navegación
     this.navCtrl.back();
   }
-  
 
   ngAfterViewInit() {
     // Añade el script de PayPal
@@ -39,13 +48,13 @@ export class PasarelaDePagoPage implements AfterViewInit {
       },
       createSubscription: (data: any, actions: any) => {
         return actions.subscription.create({
-          /* Creates the subscription */
+          /* Crea la suscripción */
           plan_id: 'P-3T662053RR938364VM2YMTHA'
         });
       },
       onApprove: (data: any, actions: any) => {
-        alert(data.subscriptionID); // You can add optional success message for the subscriber here
+        this.presentSuccessToast(data.subscriptionID); // Muestra el toast de éxito
       }
-    }).render('#paypal-button-container-P-3T662053RR938364VM2YMTHA'); // Renders the PayPal button
+    }).render('#paypal-button-container-P-3T662053RR938364VM2YMTHA'); // Renderiza el botón de PayPal
   }
 }

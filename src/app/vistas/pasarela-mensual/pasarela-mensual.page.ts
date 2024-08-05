@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pasarela-mensual',
@@ -8,8 +8,17 @@ import { NavController } from '@ionic/angular';
 })
 export class PasarelaMensualPage implements OnInit {
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private toastController: ToastController) { }
 
+  async presentSuccessToast(subscriptionID: string) {
+    const toast = await this.toastController.create({
+      message: `Suscripción creada con éxito. ID: ${subscriptionID}`,
+      duration: 3000,
+      color: 'success',
+      position: 'top'
+    });
+    toast.present();
+  }
 
   goToMainMenu() {
     // Aquí rediriges a la página del menú principal
@@ -41,13 +50,13 @@ export class PasarelaMensualPage implements OnInit {
         layout: 'vertical',
         label: 'subscribe'
       },
-      createSubscription: function(data: any, actions: any) {
+      createSubscription: (data: any, actions: any) => {
         return actions.subscription.create({
           plan_id: 'P-4XR33822HY7736231M2YN7KY'
         });
       },
-      onApprove: function(data: any, actions: any) {
-        alert(data.subscriptionID); // Mensaje de éxito opcional
+      onApprove: (data: any, actions: any) => {
+        this.presentSuccessToast(data.subscriptionID); // Muestra el toast de éxito
       }
     }).render('#paypal-button-container-P-4XR33822HY7736231M2YN7KY');
   }
