@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pasarela-de-pago',
@@ -7,7 +8,18 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class PasarelaDePagoPage implements AfterViewInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
+
+  goToMainMenu() {
+    // Aquí rediriges a la página del menú principal
+    this.navCtrl.navigateRoot('/folder/Inbox');
+  }
+
+  goBack() {
+    // Navegar hacia atrás en la pila de navegación
+    this.navCtrl.back();
+  }
+  
 
   ngAfterViewInit() {
     // Añade el script de PayPal

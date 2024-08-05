@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pasarela-mensual',
@@ -7,7 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasarelaMensualPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
+
+
+  goToMainMenu() {
+    // Aquí rediriges a la página del menú principal
+    this.navCtrl.navigateRoot('/folder/Inbox');
+  }
+
+  goBack() {
+    // Navegar hacia atrás en la pila de navegación
+    this.navCtrl.back();
+  }
 
   ngOnInit() {
     this.loadPaypalScript();
